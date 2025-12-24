@@ -47,19 +47,6 @@ export default function LoginPage() {
     }
   }
 
-  async function onGoogle() {
-    setError('')
-    setLoading(true)
-
-    try {
-      const provider = new GoogleAuthProvider()
-      await signInWithPopup(auth, provider)
-    } catch (err) {
-      setError(friendlyAuthError(err))
-    } finally {
-      setLoading(false)
-    }
-  }
 
   return (
     <div className="auth-shell">
@@ -102,9 +89,6 @@ export default function LoginPage() {
             {loading ? 'กำลังดำเนินการ...' : title}
           </button>
 
-          <button className="auth-secondary" type="button" onClick={onGoogle} disabled={loading}>
-            ดำเนินการต่อด้วย Google
-          </button>
 
           <div className="auth-footer">
             {mode === 'login' ? (
